@@ -1,0 +1,25 @@
+{
+  "name": "faktury-generator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon"
+  },
+  "keywords": [],
+  "author": "David Šarman <faktury-generator@sarman.work>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "nodemon": "^2.0.22",
+    "prettier": "2.8.8",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^2.1.1",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.1.4",
+    "typescript": "^5.1.3"
+  }
+}
