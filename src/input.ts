@@ -1,9 +1,14 @@
-import { select } from '@inquirer/prompts';
-import { TAX, getPayees } from './config';
-import { getMonthName, selectInvoiceMonth } from './dates';
-import { Invoice, Payee } from './types';
-import { inputWithHistory } from './history';
+import { input, select } from '@inquirer/prompts';
 import { addDays, endOfMonth } from 'date-fns';
+import { TAX, getPayees } from './config';
+import {
+    formatDate,
+    getMonthName,
+    parseDate,
+    selectInvoiceMonth,
+} from './dates';
+import { inputWithHistory } from './history';
+import { Invoice, Payee } from './types';
 
 const validateNum = (value: string) => {
     const valid = !isNaN(parseFloat(value));
@@ -70,15 +75,23 @@ export const getInvoice = async (): Promise<{
     }
 
     const item = `${payee.prefix} ${itemText}`;
-    let issued;
+    let issuedConf;
     if (payee.issueDate === 'LAST_DAY_OF_MONTH') {
-        issued = endOfMonth(month);
+        issuedConf = endOfMonth(month);
     } else if (payee.issueDate === 'CURRENT_DATE') {
-        issued = new Date();
+        issuedConf = new Date();
     } else {
         throw new Error('Invalid issue date');
     }
-    const payment = addDays(issued, payee.payDays);
+
+    const issued = parseDate(
+        await input({
+            message: 'Enter the issue date:',
+            default: formatDate(issuedConf),
+        })
+    );
+
+    const payment = addDays(issuedConf, payee.payDays);
 
     const invoice: Invoice = {
         units,

@@ -1,5 +1,5 @@
 import { select } from '@inquirer/prompts';
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { LOCALE } from './config';
 
 export function getMonthName(date: Date, locale: string = LOCALE ?? 'en-US') {
@@ -24,4 +24,8 @@ export async function selectInvoiceMonth() {
 
 export const formatDate = (date: Date): string => {
     return format(date, 'dd.MM.yyyy');
+};
+
+export const parseDate = (date: string): Date => {
+    return parse(date, 'dd.MM.yyyy', new Date());
 };
