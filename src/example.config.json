@@ -1,0 +1,36 @@
+{
+    "tax": 1.21,
+    "locale": "cs-CZ",
+    "source": {
+        "payment_type": "Převodem",
+        "account": "210000-4000000001/2010",
+        "name": "Franta Novák",
+        "address":  "Korunní 810/104, 101 00 Praha 10",
+        "ic": "05628335",
+        "dic": "CZ9015673552"
+    },
+    "payees": [
+        {
+            "name": "Firma ABC s.r.o.",
+            "address": "Malá 1, 110 00 Praha 1",
+            "ic": "0514565",
+            "dic": "CZ05184866",
+            "pay_days": 15,
+            "units": "MD",
+            "rate": 1234,
+            "prefix": "Práce XYZ",
+            "issue_date": "LAST_DAY_OF_MONTH"
+        },
+        {
+            "name": "Firma XYZ a.s.",
+            "address": "Velká 1, 110 00 Praha 1",
+            "ic": "687486351",
+            "dic": "CZ321686884",
+            "pay_days": 15,
+            "units": false,
+            "prefix": "Další práce",
+            "write_item": true,
+            "issue_date": "CURRENT_DATE"
+        }
+    ]
+}
