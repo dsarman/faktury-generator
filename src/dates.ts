@@ -1,6 +1,8 @@
-import { select } from "@inquirer/prompts";
+import { select } from '@inquirer/prompts';
+import { format } from 'date-fns';
+import { LOCALE } from './config';
 
-export function getMonthName(date: Date, locale: string = process.env.LOCALE ?? "en-US" ) {
+export function getMonthName(date: Date, locale: string = LOCALE ?? 'en-US') {
     return date.toLocaleString(locale, { month: 'long' });
 }
 
@@ -13,6 +15,13 @@ export async function selectInvoiceMonth() {
 
     return await select({
         message: 'Select a month to create the invoice for:',
-        choices: [{ name: lastMonthName, value: lastMonth }, { name: currentMonthName, value: currentMonth }]
+        choices: [
+            { name: lastMonthName, value: lastMonth },
+            { name: currentMonthName, value: currentMonth },
+        ],
     });
 }
+
+export const formatDate = (date: Date): string => {
+    return format(date, 'dd.MM.yyyy');
+};

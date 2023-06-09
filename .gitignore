@@ -134,3 +134,13 @@ dist
 
 # typescript build output
 build/
+
+# Mac files
+.DS_Store
+
+# Config & history files
+src/config.json
+history.json
+
+# Generated files
+output.pdf
